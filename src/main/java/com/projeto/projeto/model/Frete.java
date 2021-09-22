@@ -5,13 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class Frete {
+public class Frete implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+
 
     private String NomeDestinario;
     private String CepDestino;
@@ -19,9 +28,9 @@ public class Frete {
     private String peso;
     private String vlTotalFrete;
     private String dataPrevistaEntrega;
-    private  String dataConsulta;
+    private String dataConsulta;
 
-    public Frete(String nomeDestinario,String cepOrigem, String cepDestino ) {
+    public Frete(String nomeDestinario, String cepOrigem, String cepDestino) {
         NomeDestinario = nomeDestinario;
         CepOrigem = cepOrigem;
         CepDestino = cepDestino;
@@ -104,5 +113,10 @@ public class Frete {
                 ", dataPrevistaEntrega='" + dataPrevistaEntrega + '\'' +
                 ", dataConsulta='" + dataConsulta + '\'' +
                 '}';
+    }
+
+
+    public Frete() {
+
     }
 }

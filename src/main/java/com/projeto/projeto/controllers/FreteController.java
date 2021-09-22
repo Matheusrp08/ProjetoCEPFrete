@@ -5,13 +5,16 @@ import com.projeto.projeto.repository.FreteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.text.NumberFormat;
+import java.util.Scanner;
 
 @Controller
 public class FreteController {
@@ -27,9 +30,8 @@ public class FreteController {
 
         @PostMapping("/calcularFrete")
         public String salvarFrete(Frete frete){
-        System.out.println(frete);
+        repository.save(frete);
         return "frete";
-
     }
 
     @GetMapping("/index")
@@ -37,15 +39,15 @@ public class FreteController {
         return "index";
     }
 
-    @GetMapping("/resultado")
-    public ModelAndView resultado() {
+  @RequestMapping("/resultados")
+  public ModelAndView listaFrete() {
 
-        final ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("resultado");
+          ModelAndView mv = new ModelAndView("resultado");
+          Iterable<Frete> resultados = repository.findAll();
+          mv.addObject("resultados", resultados);
 
-        return modelAndView;
-    }
-
+          return mv;
+      }
 
     @Bean
     private ViewResolver viewResolver() {

@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlsn="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>resultado</title>
 </head>
 <body>
 
+<h1>Resultado</h1> <br>
 
-<h1>Rsultado</h1> <br>
+
+<div th:each="frete : ${resultados}">
+
+    <div class="row">
+        <label>Nome do destinario</label>
+        <p><span th:text="${frete.NomeDestinario}"></span></p>
+
+        <label>Cep de Origem</label>
+        <p><span th:text="${frete.CepOrigem}"></span></p>
+
+        <label>Cep de destino</label>
+        <p><span th:text="${frete.CepDestino}"> </span></p>
+
+        <label>Valor total do frete</label>
+        <p><span th:text="${frete.vlTotalFrete}"> </span></p>
+
+        <label>Data prevista para entrega</label>
+        <p><span th:text="${frete.dataPrevistaEntrega}"> </span></p>
+
+        <label>Data da consulta</label>
+        <p><span th:text="${frete.dataConsulta}"> </span></p>
+    </div>
+
+
+</div>
 
 <a th:href="@{/frete}">Calcular Novamente</a>
 
