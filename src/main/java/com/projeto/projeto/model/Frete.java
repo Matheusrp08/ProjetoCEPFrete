@@ -90,4 +90,19 @@ public class Frete {
     public void setDataConsulta(String dataConsulta) {
         this.dataConsulta = dataConsulta;
     }
+
+
+    @Override
+    public String toString() {
+        return "Frete{" +
+                "id=" + id +
+                ", NomeDestinario='" + NomeDestinario + '\'' +
+                ", CepDestino='" + CepDestino + '\'' +
+                ", CepOrigem='" + CepOrigem + '\'' +
+                ", peso='" + peso + '\'' +
+                ", vlTotalFrete='" + vlTotalFrete + '\'' +
+                ", dataPrevistaEntrega='" + dataPrevistaEntrega + '\'' +
+                ", dataConsulta='" + dataConsulta + '\'' +
+                '}';
+    }
 }

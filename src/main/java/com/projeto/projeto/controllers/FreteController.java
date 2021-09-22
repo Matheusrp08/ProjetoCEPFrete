@@ -1,10 +1,14 @@
 package com.projeto.projeto.controllers;
 
+import com.projeto.projeto.model.Frete;
 import com.projeto.projeto.repository.FreteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -15,21 +19,26 @@ public class FreteController {
     @Autowired
     private FreteRepository repository;
 
+
+    @GetMapping("/frete")
+    public String mostrarform(@ModelAttribute Frete frete ) {
+        return "frete";
+        }
+
+        @PostMapping("/calcularFrete")
+        public String salvarFrete(Frete frete){
+        System.out.println(frete);
+        return "frete";
+
+    }
+
     @GetMapping("/index")
     public String getPostNew() {
         return "index";
     }
-    @GetMapping("/frete")
-    public ModelAndView frete(){
-
-        final ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("frete");
-
-        return modelAndView;
-    }
 
     @GetMapping("/resultado")
-    public ModelAndView resultado(){
+    public ModelAndView resultado() {
 
         final ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("resultado");
@@ -37,9 +46,9 @@ public class FreteController {
         return modelAndView;
     }
 
+
     @Bean
-    private ViewResolver viewResolver()
-    {
+    private ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("classpath:templates/");
         viewResolver.setSuffix(".html");
