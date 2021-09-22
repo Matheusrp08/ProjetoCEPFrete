@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>frete</title>
+</head>
+<body>
+
+<h1>frete</h1>
+
+<form name="meuForm" method="post" id="formulario">
+<div class="box">
+
+    <h1>Calcular o Frete</h1>
+
+    <label>
+        <span>Nome Destinario</span>
+        <input type="text" class="input_text" name="nome" id="name"/>
+
+    </label>
+
+    <label>
+        <span>CEP Origem</span>
+        <input type="text" class="input_text" name="ceporigem" id="ceporigem"/>
+    </label>
+
+    <label>
+        <span>CEP Destino</span>
+        <input type="text" class="input_text" name="cepdestino" id="cepdestino"/>
+    </label>
+
+    <label>
+        <span>Peso</span>
+        <input type="text" class="input_text" name="peso" id="peso"/>
+    </label>
+
+
+    <input type="button" class="button" value="Calcular Frete" />
+    </label>
+</div>
+</form>
+<br>
+<a href="#" th:href="@{/index}">Pagina Inicial</a><br>
+<a href="#" th:href="@{/resultado}">Pagina teste do resultado</a>
+
+</body>
+</html>

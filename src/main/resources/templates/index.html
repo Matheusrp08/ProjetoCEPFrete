@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+
+<body>
+
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+
+<h1>Página Principal para consultar frete da empresa SigaBem</h1>
+<br>
+<br>
+
+<a href="#" th:href="@{/frete}">Clique aqui para consultar</a>
+
+
+</body>
+</html>
