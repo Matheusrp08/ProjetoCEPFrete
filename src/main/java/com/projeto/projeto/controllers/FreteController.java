@@ -31,7 +31,7 @@ public class FreteController {
         @PostMapping("/calcularFrete")
         public String salvarFrete(Frete frete){
         repository.save(frete);
-        return "frete";
+        return "redirect:resultados";
     }
 
     @GetMapping("/index")
